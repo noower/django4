@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3> 글쓰기 </h3>
+<!-- form 태그의 enctype='multipart/form-data'
+-> 해당 폼으로 파일데이터를 웹서버에 전달할 수 있도록 허용하는 속성
+만약, 이 속성이 설정되지 않은 상태로 첨부파일을 보낼경우, request.FILES가 항상 None값을 가짐 -->
+<form action = '' method = 'post' enctype = 'multipart/form-data'>
+	{% csrf_token %}
+	<table>
+		{{form.as_table}}
+	</table>
+	<!-- 중 하나
+	{{form.as_p}}
+	<ul>
+	{{form.as_ul}}
+	</ul>
+	 -->
+	 <input type ='submit' value="글쓰기">
+</form>
+
+<a href= "{% url 'blog:index' %}">메인페이지로 돌아가기</a>
+{% endblock %}
